@@ -1,0 +1,108 @@
+<div class="container" fxLayout="row wrap" fxLayoutGap="0px">
+<div class="item" fxFlex="100%" >
+    <form class="example-form">
+    <mat-form-field class="example-full-width" appearance="outline">
+      <input type="text" placeholder="From to" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of options" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+        <input type="text" placeholder="To" aria-label="Number" matInput [formControl]="myControl1" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of options" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    
+      <mat-form-field class="example-full-width"   appearance="outline">
+        <input matInput [matDatepicker]="picker" placeholder="Deprature">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      
+      <mat-form-field  class="example-full-width"  appearance="outline">
+          <input matInput [matDatepicker]="picker1" placeholder="Return">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+      
+        <mat-form-field class="example-full-width"   appearance="outline">
+            <mat-label>Traveller(s)</mat-label>
+            <select matNativeControl [(ngModel)]="selectedCar" name="car">
+              <option value="" selected></option>
+              <option *ngFor="let car of cars" [value]="car.value">
+                {{car.viewValue}}
+              </option>
+            </select>
+          </mat-form-field>
+         
+          <mat-form-field class="example-full-width"   appearance="outline">
+              <mat-label>Class</mat-label>
+              <mat-select disableRipple>
+                <mat-option value="1">Economy</mat-option>
+                <mat-option value="2">Bussiness</mat-option>
+               
+              </mat-select>
+            </mat-form-field>
+            
+            <button (click)="searchFlights()">Search</button>       
+ </form>
+</div>
+
+<!-- <ul class="flights">
+  <li *ngFor="let flight of flights"
+  (click)="onSelect(flight)">
+    <span class="badge">{{flight.name}}</span> {{flight.duration}}
+    {{flight.id}},{{flight.duration}},{{flight.arrivalTime}},{{flight.arrivalTime}},{{flight.arrivalTime}},{{flight.price}}
+  </li>
+</ul> -->
+
+    <div class="item" fxFlex>
+    <table mat-table [dataSource]="flights">
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="departureTime">
+            <th mat-header-cell *matHeaderCellDef> DepartureTime </th>
+            <td mat-cell *matCellDef="let element"> {{element.departureTime}} </td>
+          </ng-container>
+          <ng-container matColumnDef="duration">
+              <th mat-header-cell *matHeaderCellDef> Duration </th>
+              <td mat-cell *matCellDef="let element"> {{element.duration}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="arrivalTime">
+                <th mat-header-cell *matHeaderCellDef> arrivalTime </th>
+                <td mat-cell *matCellDef="let element"> {{element.arrivalTime}} </td>
+              </ng-container>
+              <ng-container matColumnDef="destination">
+                  <th mat-header-cell *matHeaderCellDef> Destination </th>
+                  <td mat-cell *matCellDef="let element"> {{element.destination}} </td>
+                </ng-container>
+                <ng-container matColumnDef="price">
+                    <th mat-header-cell *matHeaderCellDef> price </th>
+                    <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+                  </ng-container>
+        
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+  </div>
+
+
+ </div>
+ 

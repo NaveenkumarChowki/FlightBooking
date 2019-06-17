@@ -1,0 +1,19 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <!--  <span>HOME</span> -->
+      <mat-icon>flight_takeoff</mat-icon>
+       <span><a href="/"> Fligh-Booking-Online</a></span>
+       <span class="spacer"></span>
+       <nav>
+       <a  mat-button  routerLink="/register">Register</a>
+       <a  mat-button  routerLink="/login">Login</a>
+       <a  mat-button  routerLink="/search">search</a>
+       <!-- <a  class="nav-link" [routerLink]="/displayflight"></a> -->
+       <a  mat-button  routerLink="/flight-details">flight-details</a>
+      <!-- <a  mat-button  routerLink="/displayDetails">displayDetails</a>  -->
+      </nav>
+    </mat-toolbar-row>
+ </mat-toolbar>
+ <router-outlet></router-outlet>
+ 
